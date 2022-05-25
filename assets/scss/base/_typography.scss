@@ -1,0 +1,182 @@
+@use "../abstracts" as *;
+@use "sass:string" as s;
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "arial", sans-serif;
+}
+
+@include elements(font-size) {
+  font-size: inherit;
+}
+
+@include elements(line-height) {
+  line-height: inherit;
+}
+
+@include elements(font-family) {
+  font-family: inherit;
+}
+
+@for $i from 1 through 6 {
+  $rem: -0.25 * $i + 2.75rem;
+  $vw: -0.2 * $i + 1.4vw;
+
+  h#{$i},
+  .h#{$i} {
+    font-size: $rem;
+    line-height: 1.2;
+
+    @include mq(lgup) {
+      font-size: calc(#{$rem} + #{$vw});
+    }
+  }
+}
+
+a,
+.a {
+  color: $gray;
+  text-decoration: none;
+
+  &:hover {
+    color: $dgray;
+    text-decoration: none;
+  }
+
+  &.txt-ul {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.txt-lt {
+    &:hover {
+      text-decoration: line-through;
+    }
+  }
+
+  &.txt-ol {
+    &:hover {
+      text-decoration: overline;
+    }
+  }
+
+  &.txt-ul-ol {
+    &:hover {
+      text-decoration: underline overline;
+    }
+  }
+}
+
+.talign {
+  text-align: center;
+}
+
+.talign-lft {
+  text-align: left;
+}
+
+.talign-rgt {
+  text-align: right;
+}
+
+.talign-just {
+  text-align: justify;
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .talign-#{$min-max-mq} {
+      text-align: center;
+    }
+
+    .talign-lft-#{$min-max-mq} {
+      text-align: left;
+    }
+
+    .talign-rgt-#{$min-max-mq} {
+      text-align: right;
+    }
+
+    .talign-just-#{$min-max-mq} {
+      text-align: justify;
+    }
+  }
+}
+
+.txt-ul {
+  text-decoration: underline;
+}
+
+.txt-lt {
+  text-decoration: line-through;
+}
+
+.txt-ol {
+  text-decoration: overline;
+}
+
+.txt-ul-ol {
+  text-decoration: underline overline;
+}
+
+@for $i from 1 through 9 {
+  .fw-#{$i}00 {
+    font-weight: #{$i}00;
+  }
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    @for $i from 1 through 9 {
+      .fw-#{$min-max-mq}-#{$i}00 {
+        font-weight: #{$i}00;
+      }
+    }
+  }
+}
+
+@for $i from 5 through 9 {
+  .fs-0#{$i} {
+    font-size: s.unquote("0.#{$i}rem");
+  }
+}
+
+@for $i from 1 through 9 {
+  .fs-1#{$i} {
+    font-size: s.unquote("1.#{$i}rem");
+  }
+}
+
+@for $i from 2 through 5 {
+  .fs-#{$i}0 {
+    font-size: #{$i}rem;
+  }
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    @for $i from 5 through 9 {
+      .fs-#{$min-max-mq}-0#{$i} {
+        font-size: s.unquote("0.#{$i}rem");
+      }
+    }
+
+    @for $i from 1 through 9 {
+      .fs-#{$min-max-mq}-1#{$i} {
+        font-size: s.unquote("1.#{$i}rem");
+      }
+    }
+
+    @for $i from 2 through 5 {
+      .fs-#{$min-max-mq}-#{$i}0 {
+        font-size: #{$i}rem;
+      }
+    }
+  }
+}
+
+.txtfx {
+  text-shadow: 0 5px 10px $black-05;
+}

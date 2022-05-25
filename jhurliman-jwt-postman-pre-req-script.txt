@@ -1,0 +1,147 @@
+/**
+ * https://gist.github.com/jhurliman/1250118
+ */
+function base64Encode(data)
+{
+    data = CryptoJS.enc.Utf8.parse(data);
+    data = CryptoJS.enc.Base64.stringify(data);
+    data = urlSafe(data);
+    return data;
+}
+
+/**
+ * https://gist.github.com/jhurliman/1250118
+ */
+function urlSafe(data)
+{
+    return data.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
+}
+
+/**
+ * https://jwt.io/introduction/
+ */
+function getHeader()
+{
+    // Create the header.
+    // Only HMAC SHA256 is supported for now.
+    var header = JSON.stringify({
+        alg: 'HS256',
+        typ: 'JWT'
+    });
+    
+    // Encode it.
+    return base64Encode(header);
+}
+
+/**
+ * https://jwt.io/introduction/
+ */
+function getPayload()
+{
+    // Create the payload.
+    var payload = {
+        // API key that's mapped to a party ID.
+        sub: postman.getEnvironmentVariable('api_key'),
+        // Issued at.
+        iat: Math.floor(Date.now() / 1000),
+        // Nonce.
+        jti: Math.floor(Date.now() / 1000),
+    };
+    
+    // Add the obo, if available.
+    var obo = postman.getEnvironmentVariable('obo');
+    
+    if (obo) {
+        payload.obo = obo;
+    }
+    
+    var metadata = postman.getEnvironmentVariable('metadata');
+    if (metadata) {
+        payload.metadata = metadata;
+    }
+    
+    // Encode it.
+    payload = JSON.stringify(payload);
+    
+    // Encode it.
+    return base64Encode(payload);
+}
+
+/**
+ * https://jwt.io/introduction/
+ */
+function sign(header, payload)
+{
+    // Build the string to be signed.
+    var data = header + '.' + payload;
+    
+    // Hash it.
+    var hash = CryptoJS.HmacSHA256(data, postman.getEnvironmentVariable('secret_key'));
+    
+    // Encode it.
+    return urlSafe(CryptoJS.enc.Base64.stringify(hash));
+}
+
+/**
+ * Generates a reference ID.
+ */
+function getReferenceId(length)
+{
+    if (typeof(length) == 'undefined') {
+        length = 8;
+    }
+    
+    var reference_id = '';
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < length; i++) {
+        reference_id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    return reference_id.toUpperCase();
+}
+
+/**
+ * Generates a next level token.
+ */
+function getNextLevelToken()
+{
+    var request = {
+        url: postman.getEnvironmentVariable("auth_url"),
+        method: 'POST',
+        header: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "data": {
+                "attributes": {
+                    "token": postman.getEnvironmentVariable("authorization").split(" ")[1]
+                }
+            }
+        })
+    };
+
+    pm.sendRequest(request, function (err, res) {
+        if (err) {
+            throw new Error("Generating next level token failed.")
+        }
+
+        postman.setEnvironmentVariable("authorization", 'Bearer ' + res.json().data.attributes.token);
+    });
+}
+
+// Create the authorization header.
+var header = getHeader();
+var payload = getPayload();
+var signature = sign(header, payload);
+var jwt = header + '.' + payload + '.' + signature;
+
+postman.setEnvironmentVariable('authorization', 'Bearer ' + jwt);
+
+// Sets a new next level token
+if (postman.getEnvironmentVariable("auth_url")) {
+    getNextLevelToken();
+}
+
+// Set the reference ID.
+postman.setEnvironmentVariable('reference_id', getReferenceId());

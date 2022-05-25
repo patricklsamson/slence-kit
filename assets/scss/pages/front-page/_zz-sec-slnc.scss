@@ -1,0 +1,14 @@
+@use "../../abstracts" as *;
+
+.sec-slnc {
+	.table {
+		min-height: 100vh;
+
+		#slnc {
+			width: 80vh;
+			height: 60vh;
+
+			@include bg($slnc);
+		}
+	}
+}

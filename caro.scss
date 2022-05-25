@@ -1,0 +1,94 @@
+.caro-cont {
+  &.caro-fl,
+  &.caro-side-nav {
+    position: relative;
+
+    .caro-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+
+      button.caro-prev {
+        float: left;
+      }
+
+      button.caro-next {
+        float: right;
+      }
+    }
+  }
+
+  &.caro-fl {
+    .caro-dots {
+      position: absolute;
+      width: 100;
+    }
+  }
+
+  .caro {
+    position: relative;
+    overflow: hidden;
+
+    .caro-inner {
+      position: absolute;
+
+      @include cf;
+
+      .slide {
+        float: left;
+        -webkit-touch-callout: none;
+
+        @include pref(
+          (
+            user-select: none,
+          ),
+          webkit moz ms khtml
+        );
+
+        @include grab;
+      }
+    }
+  }
+
+  .caro-nav {
+    text-align: center;
+
+    button.caro-prev,
+    button.caro-next {
+      display: inline-block;
+    }
+  }
+
+  .caro-dots {
+    text-align: center;
+
+    span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: $dgray;
+      margin: 0 5px;
+      opacity: 0.5;
+      cursor: pointer;
+
+      @include pref(
+        (
+          transition: 0.5s,
+        ),
+        webkit o moz
+      );
+
+      @include pref(
+        (
+          border-radius: 50%,
+        ),
+        webkit moz
+      );
+
+      &:hover,
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

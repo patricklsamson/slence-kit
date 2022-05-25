@@ -1,0 +1,341 @@
+@use "../abstracts" as *;
+@use "sass:math" as m;
+
+.cont,
+.cont-fl {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@each $mq, $px in $cont-mqs {
+  .cont {
+    @include mq($mq) {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: m.round($px * 0.95);
+    }
+  }
+}
+
+.grid {
+  margin-left: -10px;
+  margin-right: -10px;
+
+  @include clearfix;
+
+  &.xgut {
+    margin-left: 0;
+    margin-right: 0;
+
+    @include all(gcol, in) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @include all(gcol) {
+    float: left;
+    width: 100%;
+  }
+
+  [class*="push-"],
+  [class*="pull-"] {
+    position: relative;
+  }
+
+  @for $i from 1 through 12 {
+    $percentage: m.div($i * 100%, 12);
+
+    .gcol-#{$i} {
+      max-width: $percentage;
+    }
+
+    .push-#{$i} {
+      left: $percentage;
+    }
+
+    .pull-#{$i} {
+      right: $percentage;
+    }
+  }
+
+  @each $mq, $class in $min-mqs {
+    @include mq($mq) {
+      @for $i from 1 through 12 {
+        $percentage: m.div($i * 100%, 12);
+
+        .gcol-#{$class}-#{$i} {
+          max-width: $percentage;
+        }
+
+        .#{$class}-push-#{$i} {
+          left: $percentage;
+        }
+
+        .#{$class}-pull-#{$i} {
+          right: $percentage;
+        }
+      }
+    }
+  }
+}
+
+@include all(gcol) {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.flex {
+  @include flex;
+}
+
+.flex-top {
+  @include flex;
+  @include justify(f);
+}
+
+.flex-bot {
+  @include flex;
+  @include justify(f, end);
+}
+
+.flex-lft {
+  @include flex;
+  @include align(i, f);
+}
+
+.flex-rgt {
+  @include flex;
+  @include align(i, f, end);
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .flex-#{$min-max-mq} {
+      @include flex;
+    }
+
+    .flex-top-#{$min-max-mq} {
+      @include flex;
+      @include justify(f);
+    }
+
+    .flex-bot-#{$min-max-mq} {
+      @include flex;
+      @include justify(f, end);
+    }
+
+    .flex-lft-#{$min-max-mq} {
+      @include flex;
+      @include align(i, f);
+    }
+
+    .flex-rgt-#{$min-max-mq} {
+      @include flex;
+      @include align(i, f, end);
+    }
+  }
+}
+
+.rflex {
+  @include flex(f);
+}
+
+.rflex-top {
+  @include flex(f);
+  @include align(i, f);
+}
+
+.rflex-bot {
+  @include flex(f);
+  @include align(i, f, end);
+}
+
+.rflex-lft {
+  @include flex(f);
+  @include justify(f);
+}
+
+.rflex-rgt {
+  @include flex(f);
+  @include justify(f, end);
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .rflex-#{$min-max-mq} {
+      @include flex(f);
+    }
+
+    .rflex-top-#{$min-max-mq} {
+      @include flex(f);
+      @include align(i, f);
+    }
+
+    .rflex-bot-#{$min-max-mq} {
+      @include flex(f);
+      @include align(i, f, end);
+    }
+
+    .rflex-lft-#{$min-max-mq} {
+      @include flex(f);
+      @include justify(f);
+    }
+
+    .rflex-rgt-#{$min-max-mq} {
+      @include flex(f);
+      @include justify(f, end);
+    }
+  }
+}
+
+.grid-cont {
+  @include prefix(
+    (
+      display: grid,
+    ),
+    ms,
+    f
+  );
+
+  @include align(c);
+  @include justify;
+
+  &.gtop {
+    @include align(c, f);
+  }
+
+  &.gbot {
+    @include align(c, f, end);
+  }
+
+  &.glft {
+    @include justify(f);
+  }
+
+  &.grgt {
+    @include justify(f, end);
+  }
+}
+
+.table {
+  display: table;
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+
+  &.lft {
+    margin-left: 0;
+  }
+
+  &.rgt {
+    margin-right: 0;
+  }
+
+  @each $min-max-mq in $min-max-mqs {
+    @include mq($min-max-mq) {
+      &.ctr-#{$min-max-mq},
+      &.lft-#{$min-max-mq},
+      &.rgt-#{$min-max-mq} {
+        width: auto;
+      }
+
+      &.lft-#{$min-max-mq} {
+        margin-left: 0;
+      }
+
+      &.rgt-#{$min-max-mq} {
+        margin-right: 0;
+      }
+    }
+  }
+
+  & > .valign {
+    display: table-cell;
+  }
+}
+
+.valign {
+  vertical-align: middle;
+
+  &.top {
+    vertical-align: top;
+  }
+
+  &.bot {
+    vertical-align: bottom;
+  }
+
+  &.t-top {
+    vertical-align: text-top;
+  }
+
+  &.t-bot {
+    vertical-align: text-bottom;
+  }
+
+  @each $min-max-mq in $min-max-mqs {
+    @include mq($min-max-mq) {
+      &.top-#{$min-max-mq} {
+        vertical-align: top;
+      }
+
+      &.bot-#{$min-max-mq} {
+        vertical-align: bottom;
+      }
+
+      &.t-top-#{$min-max-mq} {
+        vertical-align: text-top;
+      }
+
+      &.t-bot-#{$min-max-mq} {
+        vertical-align: text-bottom;
+      }
+    }
+  }
+}
+
+@each $span, $prop, $dim in $fluids {
+  .#{$span}-fluid {
+    #{$prop}: $dim;
+  }
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    @each $span, $prop, $dim in $fluids {
+      .#{$span}-fluid-#{$min-max-mq} {
+        #{$prop}: $dim;
+      }
+    }
+  }
+}
+
+.vwh-fluid {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.wh-fluid {
+  width: 100%;
+  height: 100%;
+}
+
+@each $xy in $xys {
+  @each $scroll-hidden in $scroll-hiddens {
+    .#{$xy}-#{$scroll-hidden} {
+      overflow-#{$xy}: $scroll-hidden;
+    }
+  }
+}
+
+.boxfx {
+  @include prefix(
+    (
+      box-shadow: 0 10px 20px 0 $black-05,
+    ),
+    webkit moz
+  );
+}

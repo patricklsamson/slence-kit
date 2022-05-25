@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+@use "sass:math" as m;
+
+.container,
+.container-fluid {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@each $mq, $px in $cont-mqs {
+  .container {
+    @include mq($mq) {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: m.round($px * 0.95);
+    }
+  }
+}
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.col,
+.col-auto {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@each $bs-mq in $bs-mqs {
+  @for $i from 1 through 12 {
+    .col-#{$bs-mq}-#{$i} {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .col-#{$bs-mq},
+  .col-#{$bs-mq}-auto {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

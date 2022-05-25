@@ -1,0 +1,281 @@
+@use "../abstracts" as *;
+@use "sass:math" as m;
+
+.img {
+  @include img-prop(cover);
+
+  &.prlax {
+    @include mq(lgup) {
+      background-attachment: fixed;
+    }
+  }
+
+  &.con {
+    @include img-prop(contain);
+  }
+
+  &.itop {
+    @include img-prop(top);
+  }
+
+  &.ibot {
+    @include img-prop(bottom);
+  }
+
+  &.ilft {
+    @include img-prop(left);
+  }
+
+  &.irgt {
+    @include img-prop(right);
+  }
+
+  &.ilt {
+    @include img-prop(left top);
+  }
+
+  &.irt {
+    @include img-prop(right top);
+  }
+
+  &.ilb {
+    @include img-prop(left bottom);
+  }
+
+  &.irb {
+    @include img-prop(right bottom);
+  }
+
+  @each $mq, $class in $min-mqs {
+    @include mq($mq) {
+      &.con-#{$class} {
+        @include img-prop(contain);
+      }
+
+      &.itop-#{$class} {
+        @include img-prop(top);
+      }
+
+      &.ibot-#{$class} {
+        @include img-prop(bottom);
+      }
+
+      &.ilft-#{$class} {
+        @include img-prop(left);
+      }
+
+      &.irgt-#{$class} {
+        @include img-prop(right);
+      }
+
+      &.ilt-#{$class} {
+        @include img-prop(left top);
+      }
+
+      &.irt-#{$class} {
+        @include img-prop(right top);
+      }
+
+      &.ilb-#{$class} {
+        @include img-prop(left bottom);
+      }
+
+      &.irb-#{$class} {
+        @include img-prop(right bottom);
+      }
+    }
+  }
+}
+
+.balign {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.balign-lft {
+  display: block;
+  margin-right: auto;
+}
+
+.balign-rgt {
+  display: block;
+  margin-left: auto;
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .balign-#{$min-max-mq} {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .balign-lft-#{$min-max-mq} {
+      display: block;
+      margin-right: auto;
+    }
+
+    .balign-rgt-#{$min-max-mq} {
+      display: block;
+      margin-left: auto;
+    }
+  }
+}
+
+@each $class, $loc in $mg-auto {
+  .m#{$class}-auto {
+    margin#{$loc}: auto;
+  }
+}
+
+@each $dual-loc, $first, $second in $dual-locs {
+  .m#{$dual-loc}-auto {
+    margin-#{$first}: auto;
+    margin-#{$second}: auto;
+  }
+}
+
+@each $class, $size in $mg-pd {
+  .mg-#{$class} {
+    margin: #{$size};
+  }
+
+  .pd-#{$class} {
+    padding: #{$size};
+  }
+
+  @each $loc, $prop in $locs {
+    .m#{$loc}-#{$class} {
+      margin-#{$prop}: #{$size};
+    }
+
+    .p#{$loc}-#{$class} {
+      padding-#{$prop}: #{$size};
+    }
+  }
+
+  @each $dual-loc, $first, $second in $dual-locs {
+    .m#{$dual-loc}-#{$class} {
+      margin-#{$first}: #{$size};
+      margin-#{$second}: #{$size};
+    }
+
+    .p#{$dual-loc}-#{$class} {
+      padding-#{$first}: #{$size};
+      padding-#{$second}: #{$size};
+    }
+  }
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    @each $class, $loc in $mg-auto {
+      .m#{$class}-#{$min-max-mq}-auto {
+        margin#{$loc}: auto;
+      }
+    }
+
+    @each $dual-loc, $first, $second in $dual-locs {
+      .m#{$dual-loc}-#{$min-max-mq}-auto {
+        margin-#{$first}: auto;
+        margin-#{$second}: auto;
+      }
+    }
+
+    @each $class, $size in $mg-pd {
+      .mg-#{$min-max-mq}-#{$class} {
+        margin: #{$size};
+      }
+
+      .pd-#{$min-max-mq}-#{$class} {
+        padding: #{$size};
+      }
+
+      @each $loc, $prop in $locs {
+        .m#{$loc}-#{$min-max-mq}-#{$class} {
+          margin-#{$prop}: #{$size};
+        }
+
+        .p#{$loc}-#{$min-max-mq}-#{$class} {
+          padding-#{$prop}: #{$size};
+        }
+      }
+
+      @each $dual-loc, $first, $second in $dual-locs {
+        .m#{$dual-loc}-#{$min-max-mq}-#{$class} {
+          margin-#{$first}: #{$size};
+          margin-#{$second}: #{$size};
+        }
+
+        .p#{$dual-loc}-#{$min-max-mq}-#{$class} {
+          padding-#{$first}: #{$size};
+          padding-#{$second}: #{$size};
+        }
+      }
+    }
+  }
+}
+
+.float-lft {
+  float: left;
+}
+
+.float-rgt {
+  float: right;
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .float-lft-#{$min-max-mq} {
+      float: left;
+    }
+
+    .float-rgt-#{$min-max-mq} {
+      float: right;
+    }
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inblock {
+  display: inline-block;
+}
+
+@each $min-max-mq in $min-max-mqs {
+  @include mq($min-max-mq) {
+    .d-none-#{$min-max-mq} {
+      display: none;
+    }
+
+    .d-block-#{$min-max-mq} {
+      display: block;
+    }
+
+    .d-inblock-#{$min-max-mq} {
+      display: inline-block;
+    }
+  }
+}
+
+@each $position in $positions {
+  .p-#{$position} {
+    position: $position;
+  }
+}
+
+.xbul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lazy {
+  background-image: none;
+}

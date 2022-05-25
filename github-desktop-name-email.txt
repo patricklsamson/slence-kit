@@ -1,0 +1,15 @@
+Note: Always double check "File > Options > Account" matching with "File > Options > Git"
+
+File > Options > Git
+
+Name
+Patrick Samson
+
+Email
+79001601+patricklsamson@users.noreply.github.com
+
+Name
+Slnc Digital Works
+
+Email
+79042173+slncdworks@users.noreply.github.com

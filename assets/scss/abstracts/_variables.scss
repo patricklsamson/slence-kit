@@ -1,0 +1,122 @@
+/**
+ * Contents:
+ * - COLORS
+ * - URL
+ * - HELPERS
+ * - MEDIA QUERIES
+ */
+
+// --------------------------------------------------
+// COLORS
+// --------------------------------------------------
+
+$lgray: hsl(0, 0%, 82.745%);
+$gray: hsl(208, 7%, 46%);
+$dgray: hsl(210, 10%, 23%);
+$white: hsl(210, 16.667%, 97.647%);
+$black-05: hsla(0, 0%, 0%, 0.5);
+
+// --------------------------------------------------
+// URL
+// --------------------------------------------------
+
+$slnc: url(screenshot.png);
+
+// --------------------------------------------------
+// HELPERS
+// --------------------------------------------------
+
+$mg-auto: (
+  "g": "",
+  "t": "-top",
+  "b": "-bottom",
+  "l": "-left",
+  "r": "-right"
+);
+
+$mg-pd: (
+  "0": 0,
+  "025": 0.25em,
+  "05": 0.5em,
+  "075": 0.75em,
+  "10": 1em,
+  "125": 1.25em,
+  "15": 1.5em,
+  "175": 1.75em,
+  "20": 2em,
+  "25": 2.5em,
+  "30": 3em,
+  "35": 3.5em,
+  "40": 4em,
+  "45": 4.5em,
+  "50": 5em
+);
+
+$locs: (
+  "t": "top",
+  "b": "bottom",
+  "l": "left",
+  "r": "right"
+);
+
+$dual-locs: ("tb" "top" "bottom", "lr" "left" "right");
+
+$fluids: (
+  "vh" "min-height" 100vh,
+  "vw" "width" 100vw,
+  "h" "height" 100%,
+  "w" "width" 100%
+);
+
+$xys: ("x", "y");
+$scroll-hiddens: (scroll, hidden);
+$positions: (relative, absolute, fixed);
+$z-items: ("nav-btn", "nav-bar", "search-box");
+$nz-items: ();
+
+// --------------------------------------------------
+// MEDIA QUERIES
+// --------------------------------------------------
+
+$xs: 481px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$cont-mqs: (
+  "smup": $sm,
+  "mdup": $md,
+  "lgup": $lg,
+  "xlup": $xl,
+  "xxl": $xxl
+);
+
+$min-mqs: (
+  "xsup": "xs",
+  "smup": "sm",
+  "mdup": "md",
+  "lgup": "lg",
+  "xlup": "xl",
+  "xxl": "xxl"
+);
+
+$max-mqs: ("xxs", "xs", "sm", "md", "lg", "xl");
+
+$min-max-mqs: (
+  "xsup",
+  "smup",
+  "mdup",
+  "lgup",
+  "xlup",
+  "xxl",
+  "xxs",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl"
+);
+
+$bs-mqs: ("sm", "md", "lg", "xl", "xxl");

@@ -1,0 +1,114 @@
+@use "../abstracts" as *;
+
+@page {
+  size: auto;
+}
+
+@include scrollbar(f, $black-05, $dgray, $gray, 10, t, t, -30%);
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  @include prefix(
+    (
+      box-sizing: border-box
+    ),
+    webkit moz
+  );
+}
+
+@include elements {
+  @include prefix(
+    (
+      box-sizing: inherit
+    ),
+    webkit moz
+  );
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@include elements(margin-padding) {
+  margin: 0;
+  padding: 0;
+}
+
+@include elements(legacy) {
+  display: block;
+}
+
+@include elements(cursor) {
+  cursor: pointer;
+}
+
+@include elements(button) {
+  @include prefix(
+    (
+      appearance: button
+    ),
+    webkit moz
+  );
+}
+
+@include elements(select) {
+  -webkit-touch-callout: none;
+
+  @include prefix(
+    (
+      user-select: none
+    ),
+    webkit moz ms khtml
+  );
+}
+
+@include elements(input) {
+  width: 100%;
+}
+
+blockquote {
+  margin: 0 40px;
+}
+
+button,
+.button {
+  @include prefix(
+    (
+      border-radius: 2px
+    ),
+    webkit moz
+  );
+
+  display: inline-block;
+  border: 1px solid $gray;
+  background: $white;
+
+  &:hover {
+    border-color: $dgray;
+    background: $lgray;
+  }
+
+  &.a {
+    display: inline;
+    border: none;
+    background: none;
+
+    &:hover {
+      border: none;
+      background: none;
+    }
+  }
+}
+
+ol,
+ul {
+  padding-left: 40px;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}

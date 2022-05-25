@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRUTHY VS FALSY</title>
+    <style>
+      body {
+        font-family: "arial", sans-serif;
+        background: #343a40;
+        color: #f8f9fa;
+      }
+
+      span {
+        color: cyan;
+      }
+
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SEE CONDITIONS USED ON "script" TAG</h1>
+
+    <h2>
+      BENCHMARKS: true, false, null, "", ! / without !, == ! / != !, undefined, Number.isNaN(), isNaN()
+    </h2>
+
+    <div id="container"></div>
+
+    <script>
+      function render(variable) {
+        var paragraph = document.createElement("p");
+        var span = document.createElement("span");
+
+        paragraph.innerHTML = variable + " variable outputs ";
+        span.innerHTML = "TRUE";
+        document.getElementById("container").appendChild(paragraph);
+        paragraph.appendChild(span);
+      }
+
+      function error(variable) {
+        var paragraph = document.createElement("p");
+        var span = document.createElement("span");
+
+        paragraph.innerHTML = variable + " variable still ";
+        span.classList.add("error");
+        span.innerHTML = "FALSE";
+        document.getElementById("container").appendChild(paragraph);
+        paragraph.appendChild(span);
+      }
+
+      var sample;
+
+      var _ = {
+        sample: sample,
+        text: "EMPTY",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample == null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample == undefined &&
+        !Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: true,
+        text: "TRUE",
+      };
+
+      if (
+        _.sample == true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: false,
+        text: "FALSE",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample == false &&
+        _.sample != null &&
+        _.sample == "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: null,
+        text: "NULL",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample == null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample == undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: "",
+        text: "EMPTY",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample == false &&
+        _.sample != null &&
+        _.sample == "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: !this.sample,
+        text: '"!"',
+      };
+
+      if (
+        _.sample == true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: undefined,
+        text: "UNDEFINED",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample == null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample == undefined &&
+        !Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: "string",
+        text: function() {
+          return this.sample.toUpperCase();
+        },
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text());
+      } else {
+        error(_.text());
+      }
+
+      var _ = {
+        sample: 1,
+        text: "1 NUMBER",
+      };
+
+      if (
+        _.sample == true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: 0,
+        text: "0 NUMBER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample == false &&
+        _.sample != null &&
+        _.sample == "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: -1,
+        text: "NEGATIVE NUMBER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: NaN,
+        text: "NAN",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: parseInt("a"),
+        text: "PARSE INT LETTER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: parseInt("a1"),
+        text: "PARSE INT LETTER AND NUMBER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: parseInt("1a"),
+        text: "PARSE INT NUMBER AND LETTER",
+      };
+
+      if (
+        _.sample == true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample) &&
+        _.sample > 0
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: parseInt("-1a"),
+        text: "PARSE INT NEGATIVE NUMBER AND LETTER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample) &&
+        _.sample < 0
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: parseInt("-a1"),
+        text: "PARSE INT HYPEN, LETTER, AND NUMBER",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        !_.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        Number.isNaN(_.sample) &&
+        isNaN(_.sample)
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: [],
+        text: "EMPTY ARRAY",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample == false &&
+        _.sample != null &&
+        _.sample == "" &&
+        _.sample &&
+        _.sample == !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        !isNaN(_.sample) &&
+        _.sample[0] != true &&
+        _.sample[0] != false &&
+        _.sample[0] == null &&
+        _.sample[0] != "" &&
+        !_.sample[0] &&
+        _.sample[0] != !_.sample[0] &&
+        _.sample[0] == undefined &&
+        !Number.isNaN(_.sample[0]) &&
+        isNaN(_.sample[0]) &&
+        _.sample.length == 0
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+
+      var _ = {
+        sample: {},
+        entries: function() {
+          return Object.entries(this.sample);
+        },
+        text: "EMPTY OBJECT",
+      };
+
+      if (
+        _.sample != true &&
+        _.sample != false &&
+        _.sample != null &&
+        _.sample != "" &&
+        _.sample &&
+        _.sample != !_.sample &&
+        _.sample != undefined &&
+        !Number.isNaN(_.sample) &&
+        isNaN(_.sample) &&
+        _.entries() != true &&
+        _.entries() == false &&
+        _.entries() != null &&
+        _.entries() == "" &&
+        _.entries() &&
+        _.entries() == !_.entries() &&
+        _.entries() != undefined &&
+        !Number.isNaN(_.entries()) &&
+        !isNaN(_.entries()) &&
+        _.entries()[0] != true &&
+        _.entries()[0] != false &&
+        _.entries()[0] == null &&
+        _.entries()[0] != "" &&
+        !_.entries()[0] &&
+        _.entries()[0] != !_.entries()[0] &&
+        _.entries()[0] == undefined &&
+        !Number.isNaN(_.entries()[0]) &&
+        isNaN(_.entries()[0]) &&
+        _.entries().length == 0
+      ) {
+        render(_.text);
+      } else {
+        error(_.text);
+      }
+    </script>
+  </body>
+</html>

@@ -45,9 +45,6 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[ruby]": {
-    "editor.defaultFormatter": "misogi.ruby-rubocop"
-  },
   "emmet.includeLanguages": {
     "erb": "html",
     "javascript": "javascriptreact"
@@ -56,9 +53,15 @@
   "es6-css-minify.minifyOnSave": "exists",
   "intelephense.diagnostics.undefinedFunctions": false,
   "prettier.tabWidth": 2,
+  "go.toolsManagement.autoUpdate": true,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  // OPTIONAL
+  "[ruby]": {
+    "editor.defaultFormatter": "misogi.ruby-rubocop"
+  },
   "ruby.rubocop.executePath": "D:\\Ruby27-x64\\bin\\",
   "ruby.rubocop.onSave": false,
-  // OPTIONAL
   "compile-hero.disable-compile-files-on-did-save-code": false,
   "compile-hero.ignore": [
     "**/dashboard/**",

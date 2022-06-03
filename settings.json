@@ -1,5 +1,5 @@
 {
-  //  VSCODE SETTINGS
+  "//": "VSCODE SETTINGS",
   "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "Monokai",
   "workbench.editor.closeEmptyGroups": false,
@@ -56,7 +56,7 @@
   "go.toolsManagement.autoUpdate": true,
   "bracket-pair-colorizer-2.depreciation-notice": false,
   "typescript.preferences.importModuleSpecifier": "relative",
-  // OPTIONAL
+  "//": "OPTIONAL",
   "[ruby]": {
     "editor.defaultFormatter": "misogi.ruby-rubocop"
   },
@@ -86,7 +86,7 @@
   "compile-hero.generate-minified-javascript": true,
   "compile-hero.javascript-output-directory": ".",
 
-  //  SUBLIME SETTINGS
+  "//": "SUBLIME SETTINGS",
   "color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
   "font_size": 12,
   "ignored_packages": ["Vintage"],
@@ -98,26 +98,26 @@
   "default_line_ending": "unix",
   "trim_trailing_white_space_on_save": true,
 
-  // SUBLIME SETTINGS - SYNTAX SPECIFIC
-  // SCSS.sublime-settings
+  "//": "SUBLIME SETTINGS - SYNTAX SPECIFIC",
+  "//": "SCSS.sublime-settings",
   "extensions": ["scss.erb", "scss"],
-  // JavaScript (Babel).sublime-settings
+  "//": "JavaScript (Babel).sublime-settings",
   "extensions": ["js"],
-  // PHP.sublime-settings
+  "//": "PHP.sublime-settings",
   "extensions": ["php"],
   "tab_size": 4,
 
-  //  SUBLIME PACKAGE SETTINGS
-  //  BeautifyRuby
+  "//": "SUBLIME PACKAGE SETTINGS",
+  "//": "BeautifyRuby",
   "keep_blank_lines": 1,
 
-  //  JsPrettier
+  "//": "JsPrettier",
   "prettier_options": {
     "useTabs": true,
     "tabWidth": 4
   },
 
-  //  LSP-intelephense
+  "//": "LSP-intelephense",
   "settings": {
     "intelephense": {
       "diagnostics": {
@@ -126,15 +126,15 @@
     }
   },
 
-  //  Minify
+  "//": "Minify",
   "open_file": false,
-  //  Minify - OPTIONAL
+  "//": "Minify - OPTIONAL",
   "auto_minify_on_save": true,
   "allowed_file_types": ["css", "js"],
 
-  //  SASS Build - OPTIONAL
-  //  Preferences > Browse Packages - Create "SASS Build" folder
-  //  Create "SASS.sublime-build" file
+  "//": "SASS Build - OPTIONAL",
+  "//": "Preferences > Browse Packages - Create 'SASS Build' folder",
+  "//": "Create 'SASS.sublime-build' file",
   "cmd": [
     "sass",
     "--update",
@@ -153,17 +153,17 @@
     "shell": "true"
   },
 
-  //  SublimeOnSaveBuild - OPTIONAL
+  "//": "SublimeOnSaveBuild - OPTIONAL"
   "filename_filter": "^[^_]+\\.(css|js|sass|less|scss)$",
 
-  //  SUBLIME MERGE COLOR SCHEME SETTINGS
-  //  Preferences > Browse Packages > User
-  //  Diff - Merge.sublime-settings
-  //  Commit Message - Merge.sublime-settings - optional
-  //  File Mode - Merge.sublime-settings - optional
+  "//":  "SUBLIME MERGE COLOR SCHEME SETTINGS",
+  "//":  "Preferences > Browse Packages > User",
+  "//":  "Diff - Merge.sublime-settings",
+  "//":  "Commit Message - Merge.sublime-settings - optional",
+  "//":  "File Mode - Merge.sublime-settings - optional",
   "color_scheme": "Monokai.sublime-color-scheme",
 
-  //  WINDOWS TERMINAL SETTINGS
+  "//": "WINDOWS TERMINAL SETTINGS",
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "multiLinePasteWarning": false,
   "trimBlockSelection": true,

@@ -31,6 +31,7 @@
   "workbench.iconTheme": "vscode-icons",
   "//": "EXTENSIONS",
   "es6-css-minify.minifyOnSave": "exists",
+  "es6-css-minify.showLogOnWarning": false,
   "go.toolsManagement.autoUpdate": true,
 
   "//": "WINDOWS TERMINAL SETTINGS",

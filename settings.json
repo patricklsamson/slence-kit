@@ -1,167 +1,37 @@
 {
   "//": "VSCODE SETTINGS",
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Monokai",
-  "workbench.editor.closeEmptyGroups": false,
-  "files.eol": "\n",
-  "files.trimTrailingWhitespace": true,
-  "files.associations": {
-    "*.erb": "erb",
-    "**/js/*.js": "javascript",
-    "*.js": "javascriptreact",
-    ".env": "shellscript"
-  },
-  "editor.multiCursorModifier": "ctrlCmd",
-  "editor.fontSize": 14,
-  "editor.formatOnPaste": true,
-  "editor.snippetSuggestions": "top",
-  "editor.wordWrap": "off",
-  "editor.insertSpaces": true,
-  "editor.detectIndentation": true,
-  "editor.tabSize": 2,
   "[php]": {
     "editor.tabSize": 4
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.wordWrap": "off",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "editor.detectIndentation": true,
+  "editor.fontSize": 14,
+  "editor.insertSpaces": true,
+  "editor.rulers": [
+    100
+  ],
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
   "emmet.includeLanguages": {
     "erb": "html",
     "javascript": "javascriptreact"
   },
-  "vscode-erb-beautify.keepBlankLines": 1,
-  "es6-css-minify.minifyOnSave": "exists",
-  "intelephense.diagnostics.undefinedFunctions": false,
-  "prettier.tabWidth": 2,
-  "go.toolsManagement.autoUpdate": true,
-  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "files.associations": {
+  "*.erb": "erb",
+    "**/js/*.js": "javascript",
+    "*.js": "javascriptreact",
+    ".env": "shellscript"
+  },
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
   "typescript.preferences.importModuleSpecifier": "relative",
-  "//": "OPTIONAL",
-  "[ruby]": {
-    "editor.defaultFormatter": "misogi.ruby-rubocop"
-  },
-  "ruby.rubocop.executePath": "D:\\Ruby27-x64\\bin\\",
-  "ruby.rubocop.onSave": false,
-  "compile-hero.disable-compile-files-on-did-save-code": false,
-  "compile-hero.ignore": [
-    "**/dashboard/**",
-    "**/webalizer/**",
-    "**/xampp/**",
-    "**/wp-admin/**",
-    "**/wp-includes/**",
-    "**/plugins/**",
-    "**/upgrade/**",
-    "**/uploads/**",
-    "**/twentynineteen/**",
-    "**/twentyseventeen/**",
-    "**/twentytwenty/**",
-    "**/abstracts/**",
-    "**/base/**",
-    "**/components/**",
-    "**/pages/**",
-    "**/vendors/**"
-  ],
-  "compile-hero.generate-minified-css": true,
-  "compile-hero.scss-output-directory": "../css",
-  "compile-hero.generate-minified-javascript": true,
-  "compile-hero.javascript-output-directory": ".",
-
-  "//": "SUBLIME SETTINGS",
-  "color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-  "font_size": 12,
-  "ignored_packages": ["Vintage"],
-  "word_wrap": false,
-  "tab_size": 2,
-  "theme": "Adaptive.sublime-theme",
-  "translate_tabs_to_spaces": true,
-  "themed_title_bar": false,
-  "default_line_ending": "unix",
-  "trim_trailing_white_space_on_save": true,
-
-  "//": "SUBLIME SETTINGS - SYNTAX SPECIFIC",
-  "//": "SCSS.sublime-settings",
-  "extensions": ["scss.erb", "scss"],
-  "//": "JavaScript (Babel).sublime-settings",
-  "extensions": ["js"],
-  "//": "PHP.sublime-settings",
-  "extensions": ["php"],
-  "tab_size": 4,
-
-  "//": "SUBLIME PACKAGE SETTINGS",
-  "//": "BeautifyRuby",
-  "keep_blank_lines": 1,
-
-  "//": "JsPrettier",
-  "prettier_options": {
-    "useTabs": true,
-    "tabWidth": 4
-  },
-
-  "//": "LSP-intelephense",
-  "settings": {
-    "intelephense": {
-      "diagnostics": {
-        "undefinedFunctions": false
-      }
-    }
-  },
-
-  "//": "Minify",
-  "open_file": false,
-  "//": "Minify - OPTIONAL",
-  "auto_minify_on_save": true,
-  "allowed_file_types": ["css", "js"],
-
-  "//": "SASS Build - OPTIONAL",
-  "//": "Preferences > Browse Packages - Create 'SASS Build' folder",
-  "//": "Create 'SASS.sublime-build' file",
-  "cmd": [
-    "sass",
-    "--update",
-    "$file:${file_path}/../css/${file_base_name}.css",
-    "--stop-on-error",
-    "--no-cache"
-  ],
-  "selector": "source.sass, source.scss",
-  "line_regex": "Line ([0-9]+):",
-
-  "osx": {
-    "path": "/usr/local/bin:$PATH"
-  },
-
-  "windows": {
-    "shell": "true"
-  },
-
-  "//": "SublimeOnSaveBuild - OPTIONAL"
-  "filename_filter": "^[^_]+\\.(css|js|sass|less|scss)$",
-
-  "//":  "SUBLIME MERGE COLOR SCHEME SETTINGS",
-  "//":  "Preferences > Browse Packages > User",
-  "//":  "Diff - Merge.sublime-settings",
-  "//":  "Commit Message - Merge.sublime-settings - optional",
-  "//":  "File Mode - Merge.sublime-settings - optional",
-  "color_scheme": "Monokai.sublime-color-scheme",
+  "workbench.colorTheme": "Monokai",
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.iconTheme": "vscode-icons",
+  "//": "EXTENSIONS",
+  "es6-css-minify.minifyOnSave": "exists",
+  "go.toolsManagement.autoUpdate": true,
 
   "//": "WINDOWS TERMINAL SETTINGS",
   "$schema": "https://aka.ms/terminal-profiles-schema",
